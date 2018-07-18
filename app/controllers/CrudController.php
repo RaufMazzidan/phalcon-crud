@@ -80,14 +80,42 @@ class CrudController extends \Phalcon\Mvc\Controller
     public function updateAction()
     {
         $model = new User();
+        $path = '../public/img/';
 
-        $array = $this->request->getPost();
-        $data = $model->findFirst($array['id']);
+        if ($this->request->isPost()) {
+            if ($this->request->hasFiles(true)) {
+                foreach ($this->request->getUploadedFiles(true) as $file) {
+                    /* @var $file \Phalcon\Http\Request\FileInterface */
+                    $fileName = $file->getName();
+                    $temporaryName = $file->getTempName();
 
-        $data->assign($array);
-        $data->save();
+                    if ($file->moveTo($path . $fileName)) {
+                        // OK! File uploaded and stored.
+                        $fileIsLocatedAt = $path . $fileName;
+                        $array = array(
+                            'id' => $this->request->getPost('id'),
+                            'username' => $this->request->getPost('username'),
+                            'password' => $this->request->getPost('password'),
+                            'foto' => $fileName
+                        );
+
+                        $data = $model->findFirst($array['id']);
+
+                        $data->assign($array);
+                        $data->save();
+                    } else {
+                        // Oops, there's been a problem uploading.
+                    }
+                }
+            } else {
+                $array = $this->request->getPost();
+                $data = $model->findFirst($array['id']);
+
+                $data->assign($array);
+                $data->save();
+            }
+        }
+
         $this->response->redirect('crud');
     }
-
 }
-
