@@ -118,4 +118,13 @@ class CrudController extends \Phalcon\Mvc\Controller
 
         $this->response->redirect('crud');
     }
+
+    public function tesAction()
+    {
+        $this->assets->addCss('css/style.css');
+        $model = new User();
+        $this->view->data = $model->find();
+    }
+
+
 }

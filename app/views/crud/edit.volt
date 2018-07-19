@@ -1,9 +1,14 @@
+<style>
+    body {
+        background-color: rgb(53, 53, 53);
+    }
+</style>
 <div class="container">
-    <br><br><br>
     <div class="row">
         <div class="col-sm-6 col-md-4 col-md-offset-4">
-            <h2 class="text-center">Update Form</h2>
-            <div class="bg-form">
+            <div class="bg-form" style="margin-top: 100px;">
+                <h2 class="text-center">Update Form</h2>
+                <br>
                 <form action="{{ url('crud/update') }}" method="POST" class="form-signin" enctype="multipart/form-data">
                     <input type="hidden" name="id" value="{{ data.id }}">
                     <div class="form-group">

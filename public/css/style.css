@@ -1,19 +1,22 @@
 .navbar-default .navbar-nav li a {
-    font-family: Helvetica-Normal;
+    font-family: Bahnschrift;
+    font-weight: bold;
     margin-right: 30px;
-    color: white;
+    color: #999999;
     font-size: 15px;
+    transition: 0.3s;
 }
 
 .navbar-default .navbar-nav li a:hover {
-    color: #4c4c4c;
-    transition: 0.4s;
+    color: whitesmoke;
+    /*transition: 0.8s;*/
+
 }
 
 .navbar-default {
-    padding-top: 5px;
-    height: 60px;
-    background-color: #ff9f43;
+    padding-top: 20px;
+    height: 85px;
+    background-color: rgb(53, 53, 53);
     border-radius: 0px;
     border: 0;
     box-shadow: inset 0 -5px 0 rgba(0, 0, 0, .07);
@@ -24,23 +27,34 @@
 }
 
 .navbar-default .navbar-brand {
-    font-family: "Verdana";
+    font-family: Bahnschrift;
+    font-weight: bold;
     margin-right: 30px;
     color: white;
     margin-top: -4px;
-    font-size: 28px;
+    font-size: 40px;
+}
+
+.titik {
+    font-family: "Cooper Black";
+    font-weight: bold;
+    margin-right: 30px;
+    color: rgb(231, 28, 55);
+    margin-top: -4px;
+    font-size: 35px;
 }
 
 .navbar .container .navbar-brand, .navbar .container-fluid .navbar-brand {
-    margin-left: 150px;
+    margin-left: 100px;
+
 }
 
 .table-view {
-    margin-top: 100px;
+    margin-top: 10px;
 }
 
 .table-view thead {
-    background: linear-gradient(to right, #ee5253, #fc7e7e);
+    background: rgb(231, 28, 55);
     /*background-color: #ee5253;*/
     box-shadow: inset 0 -5px 0 rgba(0, 0, 0, .07);
     text-align: center;
@@ -66,6 +80,7 @@
 .bg-form {
     background-color: white;
     padding: 30px;
+    border-radius: 10px;
 }
 
 .bg-form form input {
@@ -76,4 +91,24 @@
 
 input[type='submit'] {
     vertical-align: middle;
+}
+
+input[type="text"] {
+    padding-left: 3px;
+    width: 100%;
+    border-radius: 0;
+    border: 1px solid lightgrey;
+    background-color: white;
+    height: 40px;
+    font-size: 12pt;
+}
+
+input[type="password"] {
+    padding-left: 3px;
+    width: 100%;
+    border-radius: 0;
+    border: 1px solid lightgrey;
+    background-color: white;
+    height: 40px;
+    font-size: 12pt;
 }
