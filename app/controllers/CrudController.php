@@ -8,6 +8,14 @@ class CrudController extends \Phalcon\Mvc\Controller
         $this->assets->addCss('css/style.css');
         $model = new User();
         $this->view->data = $model->find();
+//        if ($this->cookies->has('try Cookies')) {
+//            // Get the cookie
+//            $rememberMeCookie = $this->cookies->get('try Cookies');
+//
+//            // Get the cookie's value
+//            $value = $rememberMeCookie->getValue();
+//            $this->view->cook = $value;
+//        }
     }
 
     public function addAction()

@@ -33,6 +33,11 @@ class AuthController extends ControllerBase
             if ($tbluser) {
                 if ($password == $tbluser->password) {
                     $this->_registerSession($tbluser);
+                    $this->cookies->set(
+                        'tryCookies',
+                        'Ini Cookies',
+                        time() + 15 * 86400
+                    );
                     $this->response->redirect('crud');
                 }
             }
@@ -53,6 +58,10 @@ class AuthController extends ControllerBase
     public function logoutAction()
     {
         $this->session->destroy();
+        $rememberMeCookie = $this->cookies->get('tryCookies');
+
+        // Delete the cookie
+        $rememberMeCookie->delete();
         echo "<script>alert('Anda Sudah Logout'); window.location = \"http://localhost/PhalCRUD/auth\";</script>";
     }
 
