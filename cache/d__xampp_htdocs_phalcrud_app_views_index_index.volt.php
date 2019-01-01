@@ -2,7 +2,7 @@
     <div class="container-fluid">
         <!-- Brand and toggle get grouped for better mobile display -->
         <div class="navbar-header">
-            <a class="navbar-brand" href="">BRAND<span class="titik">.</span></a>
+            <a class="navbar-brand" href="">Brand</a>
         </div>
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
 
@@ -26,27 +26,11 @@
     </div><!-- /.container-fluid -->
 </nav>
 <div class="container">
-
     <div class="row">
-        <div class="col-md-1"></div>
-        <div class="col-md-10">
-            <?php if ($this->flashSession->output() != NULL){?>
-            <div class="alert alert-info"><?php $this->flashSession->output() ?></div>
-            <?php } ?>
-            <h3 class="text-center">
-                <?php
-                if ($this->session->has("auth")) {
-                    $auth = $this->session->get("auth");
-                    $username = $auth['username'];
-                    echo "Hallo $username ";
-                }
-                ?></h3>
-            <h4><?php
-                $rememberMeCookie = $this->cookies->get('tryCookies');
-                $value = $rememberMeCookie->getValue();
-                echo $value;
-                ?></h4>
-            <table style="margin-top: 0;" class="table table-bordered table-striped table-view" border="0">
+        <div class="col-md-2"></div>
+        <div class="col-md-8">
+            <h3></h3>
+            <table class="table table-bordered table-striped table-view" border="0">
                 <thead>
                 <tr>
                     <td>NO</td>
@@ -57,29 +41,30 @@
                 </tr>
                 </thead>
                 <tbody>
-                <?php $no = 1;
-                foreach ($data as $x) { ?>
+
+                <?php $no = 1 ?>
+                <?php foreach ($data as $x) { ?>
                     <tr>
-                        <td><?= $no++ ?></td>
+                        <td><?php echo $no++ ?></td>
                         <td><?= $x->username ?></td>
-                        <td><?php echo $this->security->hash($x->password) ?></td>
+                        <td><?= $x->password ?></td>
                         <td><img style="width: 60px;height: 60px; border-radius: 100px;" src="img/<?= $x->foto ?>"></td>
-                        <td><a class="btn btn-danger" href="http://localhost/PhalCRUD/crud/delete/<?= $x->id ?>">
+                        <td><a class="btn btn-danger" href="<?= $this->url->get('crud/delete/') ?><?= $x->id ?>">
                                 <span class="glyphicon glyphicon-trash"></span></a>
                             &nbsp;&nbsp;
-                            <a class="btn btn-success" href="http://localhost/PhalCRUD/crud/edit/<?= $x->id ?>">
+                            <a class="btn btn-success" href="<?= $this->url->get('crud/edit/') ?><?= $x->id ?>">
                                 <span class="glyphicon glyphicon-pencil"></span></a></td>
                     </tr>
                 <?php } ?>
                 </tbody>
             </table>
         </div>
-        <div class="col-md-1"></div>
+        <div class="col-md-2"></div>
     </div>
     <div class="row">
-        <div class="col-md-1"></div>
-        <div class="col-md-9"></div>
-        <div class="col-md-1">
+        <div class="col-md-2"></div>
+        <div class="col-md-6"></div>
+        <div class="col-md-2">
             <a href="crud/add" class="btn btn-primary pull-right"><span class="glyphicon glyphicon-plus"></span> Create</a>
         </div>
         <div class="col-md-2"></div>

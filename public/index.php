@@ -2,6 +2,7 @@
 
 use Phalcon\Di\FactoryDefault;
 use Phalcon\Http\Response\Cookies;
+use Phalcon\Flash\Direct as FlashDirect;
 
 error_reporting(E_ALL);
 
@@ -50,6 +51,25 @@ try {
             $cookies->useEncryption(false);
 
             return $cookies;
+        }
+    );
+
+
+
+// Register the flash service with custom CSS classes
+    $di->set(
+        "flash",
+        function () {
+            $flash = new FlashDirect(
+                [
+                    "error"   => "alert alert-danger",
+                    "success" => "alert alert-success",
+                    "notice"  => "alert alert-info",
+                    "warning" => "alert alert-warning",
+                ]
+            );
+
+            return $flash;
         }
     );
 

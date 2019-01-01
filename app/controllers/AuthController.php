@@ -33,6 +33,7 @@ class AuthController extends ControllerBase
             if ($tbluser) {
                 if ($password == $tbluser->password) {
                     $this->_registerSession($tbluser);
+                    $this->flashSession->success("Your information was stored correctly!");
                     $this->cookies->set(
                         'tryCookies',
                         'Ini Cookies',
